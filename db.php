@@ -5,4 +5,4 @@ $conn =  mysqli_connect(
   'root',
   '',
   'freshchat'
-)
+);
