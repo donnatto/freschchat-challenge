@@ -24,11 +24,11 @@ include('includes/nav.php');
             </div>
             <!-- Correo -->
             <div class="form-group">
-              <input type="email" name="lastname" class="form-control" placeholder="Correo electrónico">
+              <input type="email" name="mail" class="form-control" placeholder="Correo electrónico">
             </div>
             <!-- Doc Identidad -->
             <div class="form-group">
-              <input type="text" name="lastname" class="form-control" placeholder="Documento de Identidad">
+              <input type="text" name="personaldoc" class="form-control" placeholder="Documento de Identidad">
             </div>
             <input type="submit" class="btn btn-outline-primary btn-block" name="save_task" value="Guardar">
           </form>
