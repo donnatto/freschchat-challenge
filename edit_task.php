@@ -25,7 +25,7 @@ if (isset($_POST['update'])) {
   $email = $_POST['mail'];
   $personal_doc = $_POST['personaldoc'];
 
-  $query = "UPDATE users set first_name = '$first_name', last_name = '$last_name', phone = '$phone', email = '$email', personal_doc = '$personal_doc' WHERE id = $id";
+  $query = "UPDATE public.users set first_name = '$first_name', last_name = '$last_name', phone = '$phone', email = '$email', personal_doc = '$personal_doc' WHERE id = $id";
   mysqli_query($conn, $query);
 
   $_SESSION['message'] = 'Usuario actualizado';

@@ -2,9 +2,4 @@
 
 session_start();
 
-$conn =  mysqli_connect(
-  'localhost',
-  'root',
-  '',
-  'freshchat'
-);
+$conn =  pg_connect(getenv('DATABASE_URL'));
