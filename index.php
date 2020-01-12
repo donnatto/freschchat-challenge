@@ -38,7 +38,7 @@ include('includes/nav.php');
             </div>
             <!-- Telefono -->
             <div class="form-group">
-              <input type="text" name="phone" class="form-control" placeholder="Numero de teléfono">
+              <input type="text" name="phone" class="form-control" placeholder="Num telf">
             </div>
             <!-- Correo -->
             <div class="form-group">
