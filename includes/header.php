@@ -7,5 +7,7 @@
   <title>Freshchat Admin Dashboard</title>
   <!-- Bootstrap -->
   <link rel="stylesheet" href="vendor/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/d1bdb6c1ec.js" crossorigin="anonymous"></script>
 </head>
 <body>

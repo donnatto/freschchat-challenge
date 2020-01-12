@@ -7,7 +7,25 @@ include('includes/nav.php');
 <!-- Body Start -->
   <div class="container p-4">
     <div class="row">
-      <div class="col-md-4">
+
+    <!-- User form -->
+      <div class="col-md-3">
+
+      <!-- Save validation -->
+      <?php
+      if (isset($_SESSION['message'])) {
+      ?>
+        <div class="alert alert-<?= $_SESSION['message_type'];?> alert-dismissible fade show" role="alert">
+        <?= $_SESSION['message'] ?>
+        <button type="button" class="close" data-dismiss="alert">
+          &times;
+        </button>
+        </div>
+      <?php
+        session_unset();
+      }
+      ?>
+
         <div class="card card-body">
           <form action="save_task.php" method="POST">
             <!-- Nombre -->
@@ -34,7 +52,46 @@ include('includes/nav.php');
           </form>
         </div>
       </div>
-      <div class="col-md-8"></div>
+
+      <!-- Users list -->
+      <div class="col-md-9">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>Telefono</th>
+              <th>Correo</th>
+              <th>Doc Identidad</th>
+              <th>Creado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php
+            $query = 'SELECT * FROM users';
+            $users = mysqli_query($conn, $query);
+
+            while ($row = mysqli_fetch_array($users)) {
+            ?>
+              <tr>
+                <td><?php echo $row['first_name'] ?></td>
+                <td><?php echo $row['last_name'] ?></td>
+                <td><?php echo $row['phone'] ?></td>
+                <td><?php echo $row['email'] ?></td>
+                <td><?php echo $row['personal_doc'] ?></td>
+                <td><?php echo $row['created_at'] ?></td>
+                <td>
+                  <a href="edit_task.php?id=<?=$row['id']?>" class="btn btn-sm btn-info"><i class="fas fa-pen-square"></i></a>
+                  <a href="delete_task.php?id=<?=$row['id']?>" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></a>
+                </td>
+              </tr>
+            <?php
+            }
+            ?>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 
