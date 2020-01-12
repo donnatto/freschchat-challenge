@@ -62,7 +62,7 @@ include('includes/nav.php');
               <th>Apellido</th>
               <th>Telefono</th>
               <th>Correo</th>
-              <th>Doc Identidad</th>
+              <th>Doc ID</th>
               <th>Creado</th>
               <th>Acciones</th>
             </tr>
