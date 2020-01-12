@@ -11,7 +11,7 @@ if (isset($_POST['save_task'])) {
 
   $query = "INSERT INTO public.users (first_name, last_name, phone, email, personal_doc) VALUES ('$first_name', '$last_name', '$phone', '$email', '$personal_doc')";
 
-  $result = mysqli_query($conn, $query);
+  $result = pg_query($conn, $query);
   if (!$result) {
     die('Query failed');
   }

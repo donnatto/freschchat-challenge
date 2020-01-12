@@ -70,9 +70,9 @@ include('includes/nav.php');
           <tbody>
             <?php
             $query = 'SELECT * FROM users';
-            $users = mysqli_query($conn, $query);
+            $users = pg_query($conn, $query);
 
-            while ($row = mysqli_fetch_array($users)) {
+            while ($row = pg_fetch_array($users)) {
             ?>
               <tr>
                 <td><?php echo $row['first_name'] ?></td>
