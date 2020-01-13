@@ -9,7 +9,7 @@ if (file_exists('request.log')) {
   var_dump($log);
 }
 
-if ($auth_token == $wh_auth) {
+if (strcmp($auth_token, $wh_auth) == 0) {
   header('Content-Type: application/json');
   $request = file_get_contents('php://input');
   $req_dump = print_r( $request, true );
