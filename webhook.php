@@ -1,6 +1,6 @@
 <?php
-$auth_token = $_SERVER['HTTP_X_FRESHCHAT_SIGNATURE'];
-$wh_auth = getenv('WH_AUTH');
+$signature = $_SERVER['HTTP_X_FRESHCHAT_SIGNATURE'];
+$public_key = getenv('WH_AUTH');
 $api_token = getenv('FRESHCHAT_API_TOKEN');
 $url='https//api.freshchat.com/v2/';
 
@@ -9,15 +9,16 @@ if (file_exists('request.log')) {
   var_dump($log);
 }
 
-if (strcmp($auth_token, $wh_auth) == 0) {
-  header('Content-Type: application/json');
-  $request = file_get_contents('php://input');
+header('Content-Type: application/json');
+$request = file_get_contents('php://input');
+// Verificamos el request con la firma y nuestra clave publica
+$verify = openssl_verify($request, $signature, $public_key);
+if ($verify == 1) {
   $req_dump = print_r( $request, true );
   $fp = file_put_contents('request.log', $req_dump );
 } else {
-  $request = $auth_token;
-  $req_dump = print_r($request, true);
-  $fp = file_put_contents('request.log', $req_dump);
+  $message = "You don't have permission to do this";
+  $fp = file_put_contents('request.log', $message);
 }
 
 ?>
