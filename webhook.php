@@ -15,8 +15,9 @@ if (strcmp($auth_token, $wh_auth) == 0) {
   $req_dump = print_r( $request, true );
   $fp = file_put_contents('request.log', $req_dump );
 } else {
-  $request = "you don't have access to this";
-  $fp = file_put_contents('request.log', $request);
+  $request = $auth_token;
+  $req_dump = print_r($request, true);
+  $fp = file_put_contents('request.log', $req_dump);
 }
 
 ?>
